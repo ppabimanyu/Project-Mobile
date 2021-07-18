@@ -12,7 +12,7 @@ class SignUp extends StatelessWidget {
       // backgroundColor: Colors.orange[400],
       appBar: AppBar(
         title: Text(
-          'Sign In',
+          'Sign Up',
           style: TextStyle(
             color: Colors.black,
           ),
