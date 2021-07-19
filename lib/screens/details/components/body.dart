@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:live_in/constants.dart';
 import 'package:live_in/models/Product.dart';
-import 'package:live_in/screens/login.dart';
+import 'package:live_in/screens/signin/login.dart';
 
 import 'add_to_cart.dart';
 import 'color_and_size.dart';
