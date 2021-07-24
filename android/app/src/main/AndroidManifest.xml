@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.live_in">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="live_in"
+        android:label="LiveIn"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

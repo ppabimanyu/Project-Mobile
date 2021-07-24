@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:live_in/constants.dart';
-import 'package:live_in/models/Product.dart';
+import 'package:live_in/screens/details/components/button_to_web.dart';
+import 'package:live_in/screens/details/components/description.dart';
+import 'package:live_in/screens/details/components/event_information.dart';
+import 'package:live_in/screens/details/components/product_title_with_image.dart';
 import 'package:live_in/screens/signin/login.dart';
 
-import 'add_to_cart.dart';
-import 'color_and_size.dart';
-import 'description.dart';
-import 'product_title_with_image.dart';
-
 class Body extends StatelessWidget {
-  final Product product;
+  final product;
 
   const Body({Key? key, required this.product}) : super(key: key);
   @override
@@ -35,7 +33,6 @@ class Body extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: size.height,
               child: Stack(
                 children: <Widget>[
                   Container(
@@ -55,13 +52,11 @@ class Body extends StatelessWidget {
                     ),
                     child: Column(
                       children: <Widget>[
-                        ColorAndSize(product: product),
+                        EventInformation(product: product),
                         SizedBox(height: kDefaultPaddin / 2),
                         Description(product: product),
                         SizedBox(height: kDefaultPaddin / 2),
-                        // CounterWithFavBtn(),
-                        // SizedBox(height: kDefaultPaddin / 2),
-                        AddToCart(product: product)
+                        ButtonToWeb(product: product)
                       ],
                     ),
                   ),

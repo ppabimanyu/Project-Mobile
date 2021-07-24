@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:live_in/models/Product.dart';
 
 import '../../../constants.dart';
 
@@ -9,7 +8,11 @@ class ProductTitleWithImage extends StatelessWidget {
     required this.product,
   }) : super(key: key);
 
-  final Product product;
+  final product;
+
+  String _img(dynamic event) {
+    return event['img'];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +26,16 @@ class ProductTitleWithImage extends StatelessWidget {
             children: <Widget>[
               Expanded(
                 child: Hero(
-                  tag: "${product.id}",
+                  tag: "${_img(product)}",
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(16.0),
-                    child: Image.asset(
-                      product.image,
-                      fit: BoxFit.fill,
+                    child: Container(
+                      height: 250,
+                      child: Image.network(
+                        'https://wsjti.id/LiveIn/public/storage/images/' +
+                            _img(product),
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),

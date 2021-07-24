@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:live_in/constants.dart';
-import 'package:live_in/models/Product.dart';
 import 'package:live_in/screens/details/components/body.dart';
 
 class DetailsScreen extends StatelessWidget {
-  final Product product;
+  final product;
 
   const DetailsScreen({Key? key, required this.product}) : super(key: key);
   @override

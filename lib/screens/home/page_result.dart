@@ -1,21 +1,40 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:live_in/constants.dart';
-import 'package:live_in/screens/details/details_screen.dart';
-import 'package:live_in/screens/signin/login.dart';
 import 'package:http/http.dart' as http;
+import 'package:live_in/screens/details/details_screen.dart';
 import 'package:loading_animations/loading_animations.dart';
 
-import 'categorries.dart';
-import 'item_card.dart';
+class PageResult extends StatelessWidget {
+  final result;
+
+  const PageResult({Key? key, required this.result}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          result,
+          style: TextStyle(color: Colors.orange),
+        ),
+        backgroundColor: Colors.white,
+      ),
+      body: Body(result: result),
+    );
+  }
+}
 
 class Body extends StatelessWidget {
-  
-  final String url = "https://wsjti.id/LiveIn/public/api/";
+  final result;
+  const Body({Key? key, required this.result}) : super(key: key);
+
+  // final String url = "https://wsjti.id/LiveIn/public/api/events/"+result;
 
   Future<List<dynamic>> getEvents() async {
-    var response = await http.get(Uri.parse(url));
+    var response = await http
+        .get(Uri.parse("https://wsjti.id/LiveIn/public/api/events/" + result));
     return json.decode(response.body)['data'];
   }
 
@@ -54,13 +73,13 @@ class Body extends StatelessWidget {
           if (snapshot.hasData) {
             return CustomScrollView(
               slivers: <Widget>[
-                SliverFixedExtentList(
-                  itemExtent: 100.0,
-                  delegate: SliverChildBuilderDelegate(
-                      (BuildContext context, int index) {
-                    return Categories();
-                  }, childCount: 1),
-                ),
+                // SliverFixedExtentList(
+                //   itemExtent: 100.0,
+                //   delegate: SliverChildBuilderDelegate(
+                //       (BuildContext context, int index) {
+                //     return Categories();
+                //   }, childCount: 1),
+                // ),
                 SliverGrid(
                   gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                     maxCrossAxisExtent: 200.0,

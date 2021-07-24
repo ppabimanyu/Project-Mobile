@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:live_in/screens/forgot_password/forgot_password.dart';
 // import 'package:live_in/screens/forgot_password/forgot_password.dart';
 
 import '../../../constants.dart';
 
-class FormSignIn extends StatefulWidget {
-  const FormSignIn({Key? key}) : super(key: key);
+class InputForgotPassword extends StatefulWidget {
+  const InputForgotPassword({Key? key}) : super(key: key);
 
   @override
-  _FormSignInState createState() => _FormSignInState();
+  _InputForgotPasswordState createState() => _InputForgotPasswordState();
 }
 
-class _FormSignInState extends State<FormSignIn> {
+class _InputForgotPasswordState extends State<InputForgotPassword> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -21,25 +20,6 @@ class _FormSignInState extends State<FormSignIn> {
         children: [
           formInputEmail(),
           SizedBox(height: kDefaultPaddin),
-          formInputPassword(),
-          SizedBox(height: kDefaultPaddin),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              TextButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ForgotPassword()),
-                  );
-                },
-                child: Text(
-                  'Forgot Password',
-                  style: TextStyle(color: Colors.orange),
-                ),
-              ),
-            ],
-          ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 16.0),
             child: Row(
@@ -54,7 +34,7 @@ class _FormSignInState extends State<FormSignIn> {
                       if (_formKey.currentState!.validate()) {}
                     },
                     child: Text(
-                      "Log In".toUpperCase(),
+                      "Continue".toUpperCase(),
                       style: TextStyle(
                         fontSize: 17,
                         fontWeight: FontWeight.bold,
@@ -68,29 +48,6 @@ class _FormSignInState extends State<FormSignIn> {
           ),
         ],
       ),
-    );
-  }
-
-  TextFormField formInputPassword() {
-    return TextFormField(
-      obscureText: true,
-      decoration: InputDecoration(
-        labelText: "Password",
-        hintText: "Enter your Password",
-        floatingLabelBehavior: FloatingLabelBehavior.auto,
-        suffixIcon: Padding(
-          padding: EdgeInsets.all(6.0),
-          child: Icon(Icons.lock_outline),
-        ),
-      ),
-      validator: (String? value) {
-        if (value == null || value.isEmpty) {
-          return 'Please enter your Password';
-        } else if (value.length < 8) {
-          return "Password is too short";
-        }
-        return null;
-      },
     );
   }
 

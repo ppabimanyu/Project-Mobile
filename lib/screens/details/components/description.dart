@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:live_in/models/Product.dart';
+import 'package:flutter_html/flutter_html.dart';
 
 import '../../../constants.dart';
 
@@ -9,16 +9,17 @@ class Description extends StatelessWidget {
     required this.product,
   }) : super(key: key);
 
-  final Product product;
+  final product;
+
+  String _description(dynamic event) {
+    return event['description'];
+  }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: kDefaultPaddin),
-      child: Text(
-        product.description,
-        style: TextStyle(height: 1.5),
-      ),
+      child: Html(data: _description(product)),
     );
   }
 }

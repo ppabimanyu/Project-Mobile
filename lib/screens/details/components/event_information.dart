@@ -1,15 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:live_in/models/Product.dart';
 
 import '../../../constants.dart';
 
-class ColorAndSize extends StatelessWidget {
-  const ColorAndSize({
+class EventInformation extends StatelessWidget {
+  const EventInformation({
     Key? key,
     required this.product,
   }) : super(key: key);
 
-  final Product product;
+  final product;
+
+  String _title(dynamic event) {
+    return event['title'];
+  }
+
+  String _category(dynamic event) {
+    return event['category'];
+  }
+
+  String _time(dynamic event) {
+    return event['time'];
+  }
+
+  String _date(dynamic event) {
+    return event['date'];
+  }
+
+  String _platform(dynamic event) {
+    return event['platform'];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +39,7 @@ class ColorAndSize extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                product.title,
+                _title(product),
                 style: Theme.of(context)
                     .textTheme
                     .headline5!
@@ -36,7 +55,7 @@ class ColorAndSize extends StatelessWidget {
                   ),
                   Text(
                     // products is out demo list
-                    product.category,
+                    _category(product),
                     style: TextStyle(color: kTextLightColor),
                   ),
                 ],
@@ -51,7 +70,7 @@ class ColorAndSize extends StatelessWidget {
                   ),
                   Text(
                     // products is out demo list
-                    product.date,
+                    _date(product),
                     style: TextStyle(color: kTextLightColor),
                   ),
                 ],
@@ -66,7 +85,7 @@ class ColorAndSize extends StatelessWidget {
                   ),
                   Text(
                     // products is out demo list
-                    product.time,
+                    _time(product),
                     style: TextStyle(color: kTextLightColor),
                   ),
                 ],
@@ -81,7 +100,7 @@ class ColorAndSize extends StatelessWidget {
                   ),
                   Text(
                     // products is out demo list
-                    product.platform,
+                    _platform(product),
                     style: TextStyle(color: kTextLightColor),
                   ),
                 ],
